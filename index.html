@@ -10,131 +10,84 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/luxury.css">
+  <style>
+    .view { display: none; }
+    .view.active { display: block; }
+    .detail-page, .checkout-page, .admin-page { max-width: 1200px; margin: auto; padding: 6vw 5vw; min-height: calc(100vh - 82px); }
+    .detail-grid, .checkout-grid, .admin-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 7vw; align-items: center; }
+    .detail-art { width: 100%; box-shadow: 18px 18px 0 var(--gold); }
+    .detail-copy h1, .checkout-page > h1, .admin-page > h1 { font-size: clamp(3rem, 6vw, 6rem); }
+    .detail-price { color: var(--purple); font-size: 1.5rem; font-weight: 700; margin: 1.5rem 0; }
+    .detail-description { max-width: 520px; color: var(--muted); font-size: 1.05rem; }
+    .specs { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin: 2rem 0; }
+    .specs div { padding: 1.2rem 0; }
+    .specs div + div { border-left: 1px solid var(--line); padding-left: 1.2rem; }
+    .specs small { display: block; color: var(--muted); font-size: .62rem; letter-spacing: .15em; margin-bottom: .4rem; }
+    .shipping-note { margin-top: 2rem; padding: 1rem 1.2rem; background: rgba(214,168,79,.1); }
+    .shipping-note p { color: var(--muted); margin: .35rem 0 0; font-size: .82rem; }
+    .checkout-grid { align-items: start; }
+    .checkout-form, .admin-form { display: grid; gap: 1rem; }
+    .checkout-form label, .admin-form label { font-size: .75rem; font-weight: 700; }
+    .checkout-form input, .checkout-form textarea, .checkout-form select, .admin-form input, .admin-form select { width: 100%; display: block; margin-top: .4rem; border: 1px solid var(--line); background: var(--cream); padding: .85rem; outline: none; }
+    .order-box { background: var(--ink); color: var(--paper); padding: 2rem; align-self: start; position: sticky; top: 110px; }
+    .summary-row, .summary-total { display: flex; justify-content: space-between; gap: 1rem; padding: .9rem 0; border-bottom: 1px solid rgba(255,255,255,.15); font-size: .85rem; }
+    .summary-total { border: 0; font-size: 1.15rem; padding-top: 1.4rem; }
+    .order-message { color: var(--gold-light); margin-top: 1rem; line-height: 1.6; }
+    .admin-grid { align-items: start; }
+    .admin-form { padding: 1.5rem; background: var(--cream); border: 1px solid var(--line); }
+    .admin-list { display: grid; gap: 1rem; }
+    .admin-item { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1rem; background: #fff; border: 1px solid var(--line); }
+    .admin-item strong { display: block; }
+    .admin-item small { color: var(--muted); }
+    .admin-item button { border: 1px solid var(--ink); background: transparent; padding: .5rem .8rem; }
+    @media (max-width: 750px) { .detail-grid, .checkout-grid, .admin-grid { grid-template-columns: 1fr; } .detail-art { box-shadow: 10px 10px 0 var(--gold); } .order-box { position: static; } }
+  </style>
 </head>
 <body>
   <header class="site-header">
-    <a class="logo" href="#home">KHIZ<span>.</span></a>
+    <a class="logo" href="#home" data-view="home">KHIZ<span>.</span></a>
     <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
     <nav class="nav" aria-label="Main navigation">
-      <a href="#home">Home</a>
-      <a href="#shop">Collection</a>
-      <a href="#about">The Artist</a>
-      <a href="#contact">Contact</a>
+      <a href="#home" data-view="home">Home</a>
+      <a href="#shop" data-view="home">Collection</a>
+      <a href="#about" data-view="home">The Artist</a>
+      <a href="#contact" data-view="home">Contact</a>
     </nav>
     <button class="cart-button" id="cartButton">Cart <span id="cartCount">0</span></button>
   </header>
 
-  <main id="home">
-    <section class="hero">
-      <div class="hero-copy">
-        <p class="eyebrow">KHIZ ART · ORIGINAL WORKS</p>
-        <h1>Where <span>color</span><br>becomes emotion.</h1>
-        <p class="hero-text">Discover expressive contemporary artworks created to make your space unforgettable.</p>
-        <div class="hero-actions">
-          <a class="button button-gold" href="#shop">Explore collection</a>
-          <a class="quiet-link" href="#about">Discover the artist →</a>
+  <main>
+    <div class="view active" id="homeView">
+      <section class="hero" id="home">
+        <div class="hero-copy">
+          <p class="eyebrow">KHIZ ART · ORIGINAL WORKS</p>
+          <h1>Where <span>color</span><br>becomes emotion.</h1>
+          <p class="hero-text">Discover expressive contemporary artworks created to make your space unforgettable.</p>
+          <div class="hero-actions"><a class="button button-gold" href="#shop">Explore collection</a><a class="quiet-link" href="#about">Discover the artist →</a></div>
         </div>
-      </div>
-      <div class="hero-art" role="img" aria-label="Featured abstract artwork">
-        <div class="orb orb-gold"></div>
-        <div class="orb orb-pink"></div>
-        <div class="shape shape-one"></div>
-        <div class="shape shape-two"></div>
-        <div class="shape shape-three"></div>
-        <div class="shape shape-four"></div>
-        <span class="art-label">FEATURED<br><strong>NO. 001</strong></span>
-      </div>
-    </section>
+        <div class="hero-art" role="img" aria-label="Featured abstract artwork"><div class="orb orb-gold"></div><div class="orb orb-pink"></div><div class="shape shape-one"></div><div class="shape shape-two"></div><div class="shape shape-three"></div><div class="shape shape-four"></div><span class="art-label">FEATURED<br><strong>NO. 001</strong></span></div>
+      </section>
 
-    <section class="collection section" id="shop">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">THE COLLECTION</p>
-          <h2>Selected <em>works</em></h2>
-        </div>
-        <p>A curated selection of original pieces designed to bring energy, color and character into your world.</p>
-      </div>
+      <section class="collection section" id="shop">
+        <div class="section-heading"><div><p class="eyebrow">THE COLLECTION</p><h2>Selected <em>works</em></h2></div><p>A curated selection of original pieces designed to bring energy, color and character into your world.</p></div>
+        <div class="art-grid" id="artGrid"></div>
+      </section>
 
-      <div class="art-grid" id="artGrid">
-        <article class="art-card" data-id="1" data-name="Golden Hour" data-price="480">
-          <div class="art-image art-gold"><span>01</span></div>
-          <div class="art-info">
-            <div><p class="art-number">ORIGINAL · 2026</p><h3>Golden Hour</h3><p>Mixed media · 60 × 80 cm</p></div>
-            <strong>$480</strong>
-          </div>
-          <button class="add-button">Add to collection</button>
-        </article>
+      <section class="statement" id="about"><div><p class="eyebrow">THE ARTIST</p><h2>Made with intention.<br><em>Collected with meaning.</em></h2></div><div><p>Khiz Art is a contemporary art studio focused on expressive forms, rich color, texture and the quiet moments that shape how we see the world.</p><p>Every work is created as an invitation: slow down, look closer, and make the space around you your own.</p><a href="#contact" class="text-link">Commission a piece →</a></div></section>
 
-        <article class="art-card" data-id="2" data-name="Quiet Forms" data-price="620">
-          <div class="art-image art-blue"><span>02</span></div>
-          <div class="art-info">
-            <div><p class="art-number">ORIGINAL · 2026</p><h3>Quiet Forms</h3><p>Acrylic on canvas · 70 × 90 cm</p></div>
-            <strong>$620</strong>
-          </div>
-          <button class="add-button">Add to collection</button>
-        </article>
+      <section class="contact section" id="contact"><div><p class="eyebrow">LET'S CREATE</p><h2>Have a space<br><em>in mind?</em></h2></div><form id="contactForm"><label>Name<input type="text" name="name" placeholder="Your name" required></label><label>Email<input type="email" name="email" placeholder="you@example.com" required></label><label>Message<textarea name="message" rows="4" placeholder="Tell me what you're looking for..." required></textarea></label><button class="button button-dark" type="submit">Send enquiry</button><p class="form-message" id="formMessage"></p></form></section>
+    </div>
 
-        <article class="art-card" data-id="3" data-name="Earth Study I" data-price="390">
-          <div class="art-image art-earth"><span>03</span></div>
-          <div class="art-info">
-            <div><p class="art-number">ORIGINAL · 2026</p><h3>Earth Study I</h3><p>Oil on canvas · 50 × 70 cm</p></div>
-            <strong>$390</strong>
-          </div>
-          <button class="add-button">Add to collection</button>
-        </article>
+    <section class="view" id="artworkView"><div class="detail-page"><div class="detail-grid" id="artworkDetail"></div></div></section>
 
-        <article class="art-card" data-id="4" data-name="After Rain" data-price="540">
-          <div class="art-image art-pink"><span>04</span></div>
-          <div class="art-info">
-            <div><p class="art-number">ORIGINAL · 2026</p><h3>After Rain</h3><p>Mixed media · 60 × 60 cm</p></div>
-            <strong>$540</strong>
-          </div>
-          <button class="add-button">Add to collection</button>
-        </article>
-      </div>
-    </section>
+    <section class="view" id="checkoutView"><div class="checkout-page"><p class="eyebrow">KHIZ ART · SECURE ORDER</p><h1>Complete your <em>purchase.</em></h1><div class="checkout-grid"><form class="checkout-form" id="checkoutForm"><h2>Customer details</h2><label>Full name<input name="name" type="text" required placeholder="Your full name"></label><label>Email address<input name="email" type="email" required placeholder="you@example.com"></label><label>Phone number<input name="phone" type="tel" required placeholder="Your phone number"></label><label>Delivery address<textarea name="address" rows="3" required placeholder="Street, city, country"></textarea></label><label>Payment method<select name="payment" required><option value="">Select a method</option><option>Mobile Money</option><option>Card</option><option>Bank transfer</option></select></label><button class="button button-gold" id="placeOrder" type="submit">Place order</button><p class="order-message" id="orderMessage"></p></form><aside class="order-box"><p class="eyebrow" style="color:#bdb5c7">ORDER SUMMARY</p><h2>Your collection</h2><div id="checkoutSummary"></div></aside></div></div></section>
 
-    <section class="statement" id="about">
-      <div>
-        <p class="eyebrow">THE ARTIST</p>
-        <h2>Made with intention.<br><em>Collected with meaning.</em></h2>
-      </div>
-      <div>
-        <p>Khiz Art is a contemporary art studio focused on expressive forms, rich color, texture and the quiet moments that shape how we see the world.</p>
-        <p>Every work is created as an invitation: slow down, look closer, and make the space around you your own.</p>
-        <a href="#contact" class="text-link">Commission a piece →</a>
-      </div>
-    </section>
-
-    <section class="contact section" id="contact">
-      <div>
-        <p class="eyebrow">LET'S CREATE</p>
-        <h2>Have a space<br><em>in mind?</em></h2>
-      </div>
-      <form id="contactForm">
-        <label>Name<input type="text" name="name" placeholder="Your name" required></label>
-        <label>Email<input type="email" name="email" placeholder="you@example.com" required></label>
-        <label>Message<textarea name="message" rows="4" placeholder="Tell me what you're looking for..." required></textarea></label>
-        <button class="button button-dark" type="submit">Send enquiry</button>
-        <p class="form-message" id="formMessage"></p>
-      </form>
-    </section>
+    <section class="view" id="adminView"><div class="admin-page"><p class="eyebrow">PRODUCT MANAGEMENT · LOCAL MODE</p><h1>Manage your <em>collection.</em></h1><div class="admin-grid"><form class="admin-form" id="productForm"><h2>Add artwork</h2><label>Name<input name="name" required placeholder="Artwork name"></label><label>Price (USD)<input name="price" type="number" min="0" required placeholder="480"></label><label>Material<input name="material" required placeholder="Mixed media"></label><label>Size<input name="size" required placeholder="60 × 80 cm"></label><label>Status<select name="status"><option>Available</option><option>Sold</option></select></label><label>Color style<select name="className"><option value="art-gold">Gold</option><option value="art-blue">Blue</option><option value="art-earth">Earth</option><option value="art-pink">Pink</option></select></label><button class="button button-gold" type="submit">Add artwork</button></form><section><h2>Current artworks</h2><div class="admin-list" id="adminList"></div></section></div></div></section>
   </main>
 
-  <footer class="footer">
-    <div class="logo">KHIZ<span>.</span></div>
-    <p>© 2026 Khiz Art. Original works, made with intention.</p>
-    <div><a href="#shop">Collection</a><a href="#contact">Contact</a></div>
-  </footer>
+  <footer class="footer"><div class="logo">KHIZ<span>.</span></div><p>© 2026 Khiz Art. Original works, made with intention.</p><div><a href="#shop">Collection</a><a href="#contact">Contact</a></div></footer>
 
-  <aside class="cart-panel" id="cartPanel" aria-hidden="true">
-    <div class="cart-head"><h2>Your collection</h2><button id="closeCart" aria-label="Close cart">×</button></div>
-    <div id="cartItems" class="cart-items"><p class="empty-cart">Your collection is empty.</p></div>
-    <div class="cart-foot">
-      <div><span>Total</span><strong id="cartTotal">$0</strong></div>
-      <button class="button button-gold" id="checkoutButton">Continue to checkout</button>
-    </div>
-  </aside>
+  <aside class="cart-panel" id="cartPanel" aria-hidden="true"><div class="cart-head"><h2>Your collection</h2><button id="closeCart" aria-label="Close cart">×</button></div><div id="cartItems" class="cart-items"></div><div class="cart-foot"><div><span>Total</span><strong id="cartTotal">$0</strong></div><button class="button button-gold" id="checkoutButton">Continue to checkout</button></div></aside>
   <div class="overlay" id="overlay"></div>
   <script src="js/script.js"></script>
 </body>
