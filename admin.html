@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Khiz Art — Local Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/luxury.css">
+  <style>
+    .admin { max-width: 1100px; margin: auto; padding: 5vw; }
+    .admin h1 { font-size: clamp(3rem, 6vw, 5rem); margin-bottom: 2rem; }
+    .admin-grid { display:grid; grid-template-columns:.8fr 1.2fr; gap:3rem; }
+    .admin-form { display:grid; gap:1rem; padding:1.5rem; background:var(--cream); border:1px solid var(--line); height:max-content; }
+    .admin-form label { font-size:.75rem; font-weight:700; }
+    .admin-form input,.admin-form select { width:100%; padding:.75rem; border:1px solid var(--line); margin-top:.35rem; background:#fff; }
+    .admin-list { display:grid; gap:1rem; }
+    .admin-item { display:flex; justify-content:space-between; align-items:center; gap:1rem; padding:1rem; background:#fff; border:1px solid var(--line); }
+    .admin-item strong { display:block; }
+    .admin-item small { color:var(--muted); }
+    .admin-item button { border:1px solid var(--ink); background:transparent; padding:.5rem .8rem; }
+    @media(max-width:750px){.admin-grid{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+  <header class="site-header"><a class="logo" href="index.html">KHIZ<span>.</span></a><nav class="nav"><a href="index.html">Store</a><a href="checkout.html">Checkout</a></nav><span>LOCAL ADMIN</span></header>
+  <main class="admin">
+    <p class="eyebrow">PRODUCT MANAGEMENT · LOCAL MODE</p>
+    <h1>Manage your <em>collection.</em></h1>
+    <div class="admin-grid">
+      <form class="admin-form" id="productForm">
+        <h2>Add artwork</h2>
+        <label>Name<input name="name" required placeholder="Artwork name"></label>
+        <label>Price (USD)<input name="price" type="number" min="0" required placeholder="480"></label>
+        <label>Material<input name="material" required placeholder="Mixed media"></label>
+        <label>Size<input name="size" required placeholder="60 × 80 cm"></label>
+        <label>Status<select name="status"><option>Available</option><option>Sold</option></select></label>
+        <label>Color style<select name="className"><option value="art-gold">Gold</option><option value="art-blue">Blue</option><option value="art-earth">Earth</option><option value="art-pink">Pink</option></select></label>
+        <button class="button button-gold" type="submit">Add artwork</button>
+      </form>
+      <section><h2>Current artworks</h2><div class="admin-list" id="adminList"></div></section>
+    </div>
+  </main>
+  <script>
+    const defaults = [
+      {id:"1",name:"Golden Hour",price:480,material:"Mixed media",size:"60 × 80 cm",status:"Available",className:"art-gold",description:"A warm study of light, movement and the final glow of the day."},
+      {id:"2",name:"Quiet Forms",price:620,material:"Acrylic on canvas",size:"70 × 90 cm",status:"Available",className:"art-blue",description:"Layered geometric forms exploring balance, space and stillness."},
+      {id:"3",name:"Earth Study I",price:390,material:"Oil on canvas",size:"50 × 70 cm",status:"Available",className:"art-earth",description:"An earthy composition inspired by natural textures and changing landscapes."},
+      {id:"4",name:"After Rain",price:540,material:"Mixed media",size:"60 × 60 cm",status:"Available",className:"art-pink",description:"A bright, atmospheric piece about renewal after a storm."}
+    ];
+    let products = JSON.parse(localStorage.getItem('khizProducts')) || defaults;
+    function save(){localStorage.setItem('khizProducts',JSON.stringify(products));render();}
+    function render(){document.getElementById('adminList').innerHTML=products.map(p=>`<div class="admin-item"><div><strong>${p.name}</strong><small>${p.status} · $${Number(p.price).toLocaleString()} · ${p.size}</small></div><button data-id="${p.id}">Delete</button></div>`).join('') || '<p>No artworks yet.</p>';}
+    document.getElementById('productForm').addEventListener('submit',e=>{e.preventDefault();const f=new FormData(e.target);products.push({id:Date.now().toString(),name:f.get('name'),price:Number(f.get('price')),material:f.get('material'),size:f.get('size'),status:f.get('status'),className:f.get('className'),description:'New artwork — add a description later.'});save();e.target.reset();});
+    document.getElementById('adminList').addEventListener('click',e=>{if(e.target.dataset.id){products=products.filter(p=>p.id!==e.target.dataset.id);save();}});
+    render();
+  </script>
+</body>
+</html>
