@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Khiz Art — original contemporary artwork and limited editions.">
   <title>Khiz Art — Contemporary Art</title>
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
@@ -13,49 +12,36 @@
 </head>
 <body>
   <header class="site-header">
-    <a class="logo" href="#home" aria-label="Khiz Art home">KHIZ<span>.</span></a>
-
-    <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false">
-      <span></span>
-      <span></span>
-    </button>
-
+    <a class="logo" href="#home">KHIZ<span>.</span></a>
+    <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
     <nav class="nav" aria-label="Main navigation">
       <a href="#home">Home</a>
-      <a href="#shop">Shop</a>
-      <a href="#about">About</a>
+      <a href="#shop">Collection</a>
+      <a href="#about">The Artist</a>
       <a href="#contact">Contact</a>
     </nav>
-
-    <button class="cart-button" id="cartButton" aria-label="Open shopping cart">
-      Cart <span id="cartCount">0</span>
-    </button>
+    <button class="cart-button" id="cartButton">Cart <span id="cartCount">0</span></button>
   </header>
 
   <main id="home">
     <section class="hero">
       <div class="hero-copy">
-        <p class="eyebrow">ORIGINAL ART · LIMITED EDITIONS</p>
-        <h1>Art that makes <em>space</em> feel alive.</h1>
-        <p class="hero-text">
-          Discover expressive original works created to bring character,
-          emotion and conversation into your space.
-        </p>
+        <p class="eyebrow">KHIZ ART · ORIGINAL WORKS</p>
+        <h1>Where <span>color</span><br>becomes emotion.</h1>
+        <p class="hero-text">Discover expressive contemporary artworks created to make your space unforgettable.</p>
         <div class="hero-actions">
-          <a class="button button-dark" href="#shop">Explore the collection</a>
-          <a class="quiet-link" href="#about">Our story <span>↗</span></a>
+          <a class="button button-gold" href="#shop">Explore collection</a>
+          <a class="quiet-link" href="#about">Discover the artist →</a>
         </div>
       </div>
-
       <div class="hero-art" role="img" aria-label="Featured abstract artwork">
-        <div class="art-glow"></div>
-        <div class="sun"></div>
+        <div class="orb orb-gold"></div>
+        <div class="orb orb-pink"></div>
         <div class="shape shape-one"></div>
         <div class="shape shape-two"></div>
         <div class="shape shape-three"></div>
         <div class="shape shape-four"></div>
-        <span class="art-label">FEATURED<br>NO. 001</span>
-        <span class="art-caption">Golden Horizon</span>
+        <span class="art-label">FEATURED<br><strong>NO. 001</strong></span>
       </div>
     </section>
 
@@ -63,73 +49,46 @@
       <div class="section-heading">
         <div>
           <p class="eyebrow">THE COLLECTION</p>
-          <h2>Selected works</h2>
+          <h2>Selected <em>works</em></h2>
         </div>
-        <p>
-          Original pieces selected for their ability to transform an ordinary
-          wall into a point of view.
-        </p>
+        <p>A curated selection of original pieces designed to bring energy, color and character into your world.</p>
       </div>
 
       <div class="art-grid" id="artGrid">
         <article class="art-card" data-id="1" data-name="Golden Hour" data-price="480">
-          <div class="art-image art-gold">
-            <span>01</span>
-            <div class="image-overlay">View artwork <span>↗</span></div>
-          </div>
+          <div class="art-image art-gold"><span>01</span></div>
           <div class="art-info">
-            <div>
-              <h3>Golden Hour</h3>
-              <p>Mixed media · 60 × 80 cm</p>
-            </div>
+            <div><p class="art-number">ORIGINAL · 2026</p><h3>Golden Hour</h3><p>Mixed media · 60 × 80 cm</p></div>
             <strong>$480</strong>
           </div>
-          <button class="add-button">Add to cart</button>
+          <button class="add-button">Add to collection</button>
         </article>
 
         <article class="art-card" data-id="2" data-name="Quiet Forms" data-price="620">
-          <div class="art-image art-blue">
-            <span>02</span>
-            <div class="image-overlay">View artwork <span>↗</span></div>
-          </div>
+          <div class="art-image art-blue"><span>02</span></div>
           <div class="art-info">
-            <div>
-              <h3>Quiet Forms</h3>
-              <p>Acrylic on canvas · 70 × 90 cm</p>
-            </div>
+            <div><p class="art-number">ORIGINAL · 2026</p><h3>Quiet Forms</h3><p>Acrylic on canvas · 70 × 90 cm</p></div>
             <strong>$620</strong>
           </div>
-          <button class="add-button">Add to cart</button>
+          <button class="add-button">Add to collection</button>
         </article>
 
         <article class="art-card" data-id="3" data-name="Earth Study I" data-price="390">
-          <div class="art-image art-earth">
-            <span>03</span>
-            <div class="image-overlay">View artwork <span>↗</span></div>
-          </div>
+          <div class="art-image art-earth"><span>03</span></div>
           <div class="art-info">
-            <div>
-              <h3>Earth Study I</h3>
-              <p>Oil on canvas · 50 × 70 cm</p>
-            </div>
+            <div><p class="art-number">ORIGINAL · 2026</p><h3>Earth Study I</h3><p>Oil on canvas · 50 × 70 cm</p></div>
             <strong>$390</strong>
           </div>
-          <button class="add-button">Add to cart</button>
+          <button class="add-button">Add to collection</button>
         </article>
 
         <article class="art-card" data-id="4" data-name="After Rain" data-price="540">
-          <div class="art-image art-pink">
-            <span>04</span>
-            <div class="image-overlay">View artwork <span>↗</span></div>
-          </div>
+          <div class="art-image art-pink"><span>04</span></div>
           <div class="art-info">
-            <div>
-              <h3>After Rain</h3>
-              <p>Mixed media · 60 × 60 cm</p>
-            </div>
+            <div><p class="art-number">ORIGINAL · 2026</p><h3>After Rain</h3><p>Mixed media · 60 × 60 cm</p></div>
             <strong>$540</strong>
           </div>
-          <button class="add-button">Add to cart</button>
+          <button class="add-button">Add to collection</button>
         </article>
       </div>
     </section>
@@ -137,44 +96,24 @@
     <section class="statement" id="about">
       <div>
         <p class="eyebrow">THE ARTIST</p>
-        <h2>Made with intention.<br>Collected with meaning.</h2>
+        <h2>Made with intention.<br><em>Collected with meaning.</em></h2>
       </div>
-      <div class="statement-copy">
-        <p>
-          Khiz Art is a contemporary art studio focused on expressive forms,
-          texture and the quiet moments that shape how we see the world.
-        </p>
-        <p>
-          Every work is created as an invitation: slow down, look closer, and
-          make the space around you your own.
-        </p>
-        <a href="#contact" class="text-link">Commission a piece <span>→</span></a>
+      <div>
+        <p>Khiz Art is a contemporary art studio focused on expressive forms, rich color, texture and the quiet moments that shape how we see the world.</p>
+        <p>Every work is created as an invitation: slow down, look closer, and make the space around you your own.</p>
+        <a href="#contact" class="text-link">Commission a piece →</a>
       </div>
     </section>
 
     <section class="contact section" id="contact">
       <div>
         <p class="eyebrow">LET'S CREATE</p>
-        <h2>Have a space<br>in mind?</h2>
-        <p class="contact-intro">
-          Looking for something personal? Tell us about your space and we can
-          discuss an original commission.
-        </p>
+        <h2>Have a space<br><em>in mind?</em></h2>
       </div>
-
       <form id="contactForm">
-        <label>
-          Name
-          <input type="text" name="name" placeholder="Your name" required>
-        </label>
-        <label>
-          Email
-          <input type="email" name="email" placeholder="you@example.com" required>
-        </label>
-        <label>
-          Message
-          <textarea name="message" rows="4" placeholder="Tell me what you're looking for..." required></textarea>
-        </label>
+        <label>Name<input type="text" name="name" placeholder="Your name" required></label>
+        <label>Email<input type="email" name="email" placeholder="you@example.com" required></label>
+        <label>Message<textarea name="message" rows="4" placeholder="Tell me what you're looking for..." required></textarea></label>
         <button class="button button-dark" type="submit">Send enquiry</button>
         <p class="form-message" id="formMessage"></p>
       </form>
@@ -184,37 +123,18 @@
   <footer class="footer">
     <div class="logo">KHIZ<span>.</span></div>
     <p>© 2026 Khiz Art. Original works, made with intention.</p>
-    <div class="footer-links">
-      <a href="#shop">Shop</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </div>
+    <div><a href="#shop">Collection</a><a href="#contact">Contact</a></div>
   </footer>
 
   <aside class="cart-panel" id="cartPanel" aria-hidden="true">
-    <div class="cart-head">
-      <div>
-        <p class="eyebrow">YOUR SELECTION</p>
-        <h2>Your cart</h2>
-      </div>
-      <button id="closeCart" aria-label="Close cart">×</button>
-    </div>
-
-    <div id="cartItems" class="cart-items">
-      <p class="empty-cart">Your cart is empty.</p>
-    </div>
-
+    <div class="cart-head"><h2>Your collection</h2><button id="closeCart" aria-label="Close cart">×</button></div>
+    <div id="cartItems" class="cart-items"><p class="empty-cart">Your collection is empty.</p></div>
     <div class="cart-foot">
-      <div>
-        <span>Total</span>
-        <strong id="cartTotal">$0</strong>
-      </div>
-      <button class="button button-dark" id="checkoutButton">Checkout</button>
+      <div><span>Total</span><strong id="cartTotal">$0</strong></div>
+      <button class="button button-gold" id="checkoutButton">Continue to checkout</button>
     </div>
   </aside>
-
   <div class="overlay" id="overlay"></div>
-
   <script src="js/script.js"></script>
 </body>
 </html>
