@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout — Khiz Art</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/luxury.css">
+  <style>
+    .checkout-page { padding: 6vw 5vw; max-width: 1200px; margin: auto; }
+    .checkout-page > h1 { font-size: clamp(3rem, 6vw, 5.5rem); margin-bottom: 3rem; }
+    .checkout-grid { display: grid; grid-template-columns: 1fr .75fr; gap: 7vw; }
+    .checkout-form { display: grid; gap: 1rem; }
+    .checkout-form h2, .order-box h2 { font-size: 2rem; margin-bottom: 1rem; }
+    .checkout-form label { font-size: .75rem; font-weight: 700; }
+    .checkout-form input, .checkout-form textarea, .checkout-form select { width: 100%; display: block; margin-top: .4rem; border: 1px solid var(--line); background: var(--cream); padding: .85rem; outline: none; }
+    .checkout-form input:focus, .checkout-form textarea:focus, .checkout-form select:focus { border-color: var(--purple); }
+    .order-box { background: var(--ink); color: var(--paper); padding: 2rem; align-self: start; position: sticky; top: 110px; }
+    .summary-row, .summary-total { display: flex; justify-content: space-between; gap: 1rem; padding: .9rem 0; border-bottom: 1px solid rgba(255,255,255,.15); font-size: .85rem; }
+    .summary-total { border: 0; font-size: 1.15rem; padding-top: 1.4rem; }
+    .order-message { color: var(--gold-light); margin-top: 1rem; line-height: 1.6; }
+    @media (max-width: 750px) { .checkout-grid { grid-template-columns: 1fr; } .order-box { position: static; } }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo" href="index.html">KHIZ<span>.</span></a>
+    <nav class="nav"><a href="index.html#home">Home</a><a href="index.html#shop">Collection</a><a href="index.html#about">The Artist</a></nav>
+    <a class="cart-button" href="index.html#shop">Continue shopping</a>
+  </header>
+  <main class="checkout-page">
+    <p class="eyebrow">KHIZ ART · SECURE ORDER</p>
+    <h1>Complete your <em>purchase.</em></h1>
+    <div class="checkout-grid">
+      <form class="checkout-form" id="checkoutForm">
+        <h2>Customer details</h2>
+        <label>Full name<input name="name" type="text" required placeholder="Your full name"></label>
+        <label>Email address<input name="email" type="email" required placeholder="you@example.com"></label>
+        <label>Phone number<input name="phone" type="tel" required placeholder="Your phone number"></label>
+        <label>Delivery address<textarea name="address" rows="3" required placeholder="Street, city, country"></textarea></label>
+        <label>Payment method<select name="payment" required><option value="">Select a method</option><option>Mobile Money</option><option>Card</option><option>Bank transfer</option></select></label>
+        <button class="button button-gold" id="placeOrder" type="submit">Place order</button>
+        <p class="order-message" id="orderMessage"></p>
+      </form>
+      <aside class="order-box">
+        <p class="eyebrow" style="color:#bdb5c7">ORDER SUMMARY</p>
+        <h2>Your collection</h2>
+        <div id="checkoutSummary"></div>
+      </aside>
+    </div>
+  </main>
+  <script src="js/script.js"></script>
+</body>
+</html>
